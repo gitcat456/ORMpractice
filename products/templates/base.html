@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}My Shop{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'products/css/styles.css' %}">
+</head>
+<body>
+  <header>
+    <h2>My Online Store</h2>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    © 2025 My Shop
+  </footer>
+</body>
+</html>
