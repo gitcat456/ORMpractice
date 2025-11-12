@@ -18,4 +18,13 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     
-
+class Description(models.Model):
+    desc = models.TextField()
+    product = models.OneToOneField(
+        Product,
+        on_delete=models.CASCADE,
+        related_name ='description'
+    )
+    
+    def __str__(self):
+        return self.desc
