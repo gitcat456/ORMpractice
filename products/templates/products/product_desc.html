@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Descriptions {% endblock %}
+
+{% block content %}
+<h1> All Categories <h1>
+<ol>
+    {% for product in category_list%}
+        <li><strong>{{ product.name }}</strong> </li>
+    {% empty %}
+    <i>No products available at the moment</i>
+    {% endfor %}
+</ol>
+{% endblock %}
