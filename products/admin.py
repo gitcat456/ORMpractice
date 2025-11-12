@@ -1,14 +1,20 @@
 from django.contrib import admin
-from .models import Category # model import 
+from .models import Category, Product # model import 
 
 #simple registration
 #admin.site.register(Product)
 
-class ProductAdmin(admin.ModelAdmin):
+class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name') # columns in list view
     list_filter = ('id',)  #filter sidebar
     search_fields = ('name', 'id')  #search bar
    # ordering = ('price',)  #default ordering
+   
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('name', 'category')
+    list_filter = ('category',)
+    
+    
 
-
-admin.site.register(Category, ProductAdmin)
+admin.site.register(Product, ProductAdmin)
+admin.site.register(Category, CategoryAdmin)
