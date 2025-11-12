@@ -14,7 +14,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'category', 'price')
     list_filter = ('category',)
     search_fields = ('name', 'id')
-    ordering =('-price')
+    ordering =('-price',)
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
