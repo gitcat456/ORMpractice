@@ -28,3 +28,13 @@ class Description(models.Model):
     
     def __str__(self):
         return self.desc
+    
+class ProductTag(models.Model):
+    tag = models.CharField(max_length=50)
+    product = models.ManyToManyField(
+        Product,
+        related_name='tags'
+    )
+    
+    def __str__(self):
+        return self.tag
