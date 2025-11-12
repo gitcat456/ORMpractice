@@ -6,10 +6,10 @@
 {% block content %}
 <h1> All Categories <h1>
 <ol>
-    {% for product in category_list%}
-        <li><strong>{{ product.name }}</strong> </li>
+    {% for category in category_list%}
+        <li><strong>{{ category.name }}</strong> </li>
     {% empty %}
-    <i>No products available at the moment</i>
+    <i>No categories available at the moment</i>
     {% endfor %}
 </ol>
 {% endblock %}
