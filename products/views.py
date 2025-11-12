@@ -4,8 +4,12 @@ from django.views.generic import TemplateView
 from .models import Category
 
 #function based view
-def home_page(request):
-    return HttpResponse("Welcome to ERSD E-commercer store ")
+#def home_page(request):
+    #return HttpResponse("Welcome to ERSD E-commercer store ")
+
+class HomePageView(TemplateView):
+    """A class based view rendering a template named hello.html"""
+    template_name = 'products/home.html'
 
 
 def category_list(request):
@@ -18,6 +22,3 @@ def category_list(request):
     return render(request, 'products/product_desc.html', context)
 
 
-class HelloView(TemplateView):
-    """A class based view rendering a template named hello.html"""
-    template_name = 'hello.html'
