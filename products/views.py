@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Category, Product
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 #function based view
 #def home_page(request):
@@ -13,10 +14,11 @@ class HomePageView(TemplateView):
     template_name = 'products/home.html'
     
     
-class ProductListView(ListView):
+class ProductListView(LoginRequiredMixin, ListView):
     model = Product
     template_name = 'products/product_list.html'
     context_object_name = 'products'
+    login_url = 'login'
     
 class ProductDetailView(DetailView):
     model = Product
