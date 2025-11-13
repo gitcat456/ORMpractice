@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic import TemplateView, ListView, DetailView, CreateView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Category, Product
 from django.urls import reverse_lazy
 
@@ -27,6 +27,17 @@ class ProductCreateView(CreateView):
     model = Product
     template_name = 'products/product_form.html'
     fields = ['name', 'price', 'category']
+    success_url = reverse_lazy('product_list')
+    
+class ProductUpdateView(UpdateView):
+    model = Product
+    template_name = 'products/product_form.html'
+    fields = ['name', 'price', 'category']
+    success_url = reverse_lazy('product_list')
+    
+class ProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'products/product_confirm_delete.html'
     success_url = reverse_lazy('product_list')
     
 def category_list(request):
