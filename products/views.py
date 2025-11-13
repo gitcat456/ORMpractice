@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView
 from .models import Category, Product
+from django.urls import reverse_lazy
 
 #function based view
 #def home_page(request):
@@ -21,6 +22,12 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = 'products/product_detail.html'
     context_object_name = 'product'
+    
+class ProductCreateView(CreateView):
+    model = Product
+    template_name = 'products/product_form.html'
+    fields = ['name', 'price', 'category']
+    success_url = reverse_lazy('product_list')
     
 def category_list(request):
     """Retrieves all categories and renders a template displaying the list"""
