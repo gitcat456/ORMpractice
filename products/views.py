@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 from .models import Category, Product
 
 #function based view
@@ -17,6 +17,10 @@ class ProductListView(ListView):
     template_name = 'products/product_list.html'
     context_object_name = 'products'
     
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'products/product_detail.html'
+    context_object_name = 'product'
     
 def category_list(request):
     """Retrieves all categories and renders a template displaying the list"""
