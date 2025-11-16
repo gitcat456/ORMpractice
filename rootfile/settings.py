@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'accounts.User'
 LOGIN_REDIRECT_URL = 'product_list'   # where to go after login
 LOGOUT_REDIRECT_URL = 'login'         # after logout
 LOGIN_URL = 'login'                   # when not logged in
@@ -43,8 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'products',
     'accounts',
+    'products',
 ]
 
 MIDDLEWARE = [
