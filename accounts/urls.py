@@ -10,7 +10,7 @@ from django.contrib.auth.views import (
 
 urlpatterns = [
     path('signup/', SignUpView.as_view(), name='signup'),
-    path('login/', LoginView.as_view(template_name='accounts/login.html'), name='login'),
+    path('login/', LoginView.as_view(template_name='accounts/login.html', redirect_authenticated_user = True), name='login'),
     path('logout/', LogoutView.as_view(template_name='accounts/logout.html'), name='logout'),
     path('password_change/', PasswordChangeView.as_view(template_name='accounts/password_change.html'), name='password_change'),
     path('password_change/done/', PasswordChangeDoneView.as_view(template_name='accounts/password_change_done.html'), name='password_change_done')
