@@ -4,7 +4,7 @@ from .models import User
 
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
-    list_display = ('username', 'role', 'is_staff', 'is_active', 'password')
+    list_display = ('username', 'role', 'is_staff', 'is_active')
     list_filter = ('role', 'is_staff', 'is_superuser', 'is_active')
     list_editable = ('role', 'is_active')  # Allows quick editing from list view
     
