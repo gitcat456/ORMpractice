@@ -1,2 +1,8 @@
 <h1>Welcome to the Product Store</h1>
 <p>Explore our categories and products!</p>
+<a href="{% url 'category_list' %}" class="btn btn-primary">View Categories</a>
+<a href="{% url 'product_list' %}" class="btn btn-primary">View All Products</a>
+<form method="POST" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>

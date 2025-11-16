@@ -4,3 +4,8 @@
   {% csrf_token %}
   <button type="submit">Yes, Delete</button>
 </form>
+<form method="POST" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
+

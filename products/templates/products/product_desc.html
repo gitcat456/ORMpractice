@@ -12,4 +12,9 @@
     <i>No categories available at the moment</i>
     {% endfor %}
 </ol>
+<form method="POST" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
+
 {% endblock %}

@@ -3,3 +3,8 @@
 <p>Price: ${{ product.price }}</p>
 <p>Category: {{ product.category.name }}</p>
 <p>Description: {{ product.description.desc }}</p>
+<form method="POST" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
+
