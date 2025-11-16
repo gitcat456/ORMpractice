@@ -5,13 +5,14 @@ from .models import Category, Product
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from accounts.mixins import AdminRequiredMixin
 
 #function based view
 #@login_required(login_url='login)
 #def home_page(request):
     #return HttpResponse("Welcome to ERSD E-commercer store ")
 
-class HomePageView(TemplateView):
+class HomePageView(LoginRequiredMixin, TemplateView):
     """A class based view rendering a template named hello.html"""
     template_name = 'products/home.html'
     
@@ -28,21 +29,21 @@ class ProductDetailView(LoginRequiredMixin, DetailView):
     context_object_name = 'product'
     login_url = 'login'
     
-class ProductCreateView(LoginRequiredMixin, CreateView):
+class ProductCreateView(LoginRequiredMixin, AdminRequiredMixin, CreateView):
     model = Product
     template_name = 'products/product_form.html'
     fields = ['name', 'price', 'category']
     success_url = reverse_lazy('product_list')
     login_url = 'login'
     
-class ProductUpdateView(LoginRequiredMixin, UpdateView):
+class ProductUpdateView(LoginRequiredMixin, AdminRequiredMixin, UpdateView):
     model = Product
     template_name = 'products/product_form.html'
     fields = ['name', 'price', 'category']
     success_url = reverse_lazy('product_list')
     login_url = 'login'
     
-class ProductDeleteView(LoginRequiredMixin, DeleteView):
+class ProductDeleteView(LoginRequiredMixin,AdminRequiredMixin, DeleteView):
     model = Product
     template_name = 'products/product_confirm_delete.html'
     success_url = reverse_lazy('product_list')
