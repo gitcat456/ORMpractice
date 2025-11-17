@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from accounts.models import User  # Import your custom User model
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import get_user_model 
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -22,3 +24,21 @@ class CustomUserCreationForm(UserCreationForm):
         if commit:
             user.save()   # finally save to DB
         return user  # return the final user object
+    
+    
+User = get_user_model  # get the active user model without hardcoding ie from accounts.User
+
+class CustomLoginForm(AuthenticationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'password']
+        widgets = {
+            'username': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter username'
+            }),
+            'password': forms.PasswordInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter password'
+            }),
+        }
